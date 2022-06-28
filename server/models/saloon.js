@@ -6,23 +6,21 @@ module.exports = (Sequelize, DataTypes) => {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
-          }, 
-          owner_id:{
+        },
+        owner_id: {
             type: DataTypes.UUID,
             allowNull: false
-          },
+        },
         saloon_name: {
             type: DataTypes.STRING,
         },
         mobile_number: {
-            type: DataTypes.INTEGER,   
+            type: DataTypes.INTEGER,
         },
         rating: {
-            type : DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL,
         }
-        
-    });   
-    return Saloon;  
+
+    });
+    return Saloon;
 }
-
-

@@ -1,4 +1,4 @@
-const { User, Saloon, Barber, SaloonRating, BarberRating  } = require('../models');
+const { User, Saloon, Barber, SaloonRating, BarberRating } = require('../models');
 const jwt = require("jsonwebtoken")
 exports.SignUp = async (req, res) => {
     //add new user and return 201
@@ -103,32 +103,32 @@ exports.RateBarber = async (req, res, next) => {
         if (there) {
             barber_id = req.body.barber_id
             rating = req.body.rating;
-            if(rating <= 5){
-                const rate = await Barber.findOne({where: {id : barber_id} });
+            if (rating <= 5) {
+                const rate = await Barber.findOne({ where: { id: barber_id } });
 
-     const z = rate.rating;
-     if(z=="0"){
-        const find1 = await Barber.update({rating: rating},{where: {id : barber_id} })
-        if(find1){
-            const barber = await Barber.findOne({where: {id : barber_id} });
-    return res.status(200).json({ success: true, barber });
+                const z = rate.rating;
+                if (z == "0") {
+                    const find1 = await Barber.update({ rating: rating }, { where: { id: barber_id } })
+                    if (find1) {
+                        const barber = await Barber.findOne({ where: { id: barber_id } });
+                        return res.status(200).json({ success: true, barber });
+                    }
+                }
+                const Updaterate = (rating + z) / 2;
+                const find = await Barber.update({ rating: Updaterate }, { where: { id: barber_id } })
+                if (find) {
+                    const barber = await Barber.findOne({ where: { id: barber_id } });
+                    return res.status(200).json({ success: true, barber });
+                }
+            } else {
+                return res.status(400).json({ success: false, message: 'Rate between 1 -  5' });
             }
-     }
-    const Updaterate = (rating+ z)/2;
-            const find = await Barber.update({rating: Updaterate},{where: {id : barber_id} })
-          if(find){
-        const barber = await Barber.findOne({where: {id : barber_id} });
-return res.status(200).json({ success: true, barber });
         }
-    }else{
-        return res.status(400).json({ success: false, message: 'Rate between 1 -  5' });
     }
-    }
-    } 
     catch (error) {
         console.log(error)
-        return res.status(500).json({ success: false, message:"Barber is not registred"  })
-    }   
+        return res.status(500).json({ success: false, message: "Barber is not registred" })
+    }
 }
 
 exports.RateSaloon = async (req, res, next) => {
@@ -143,29 +143,29 @@ exports.RateSaloon = async (req, res, next) => {
         if (there) {
             saloon_id = req.body.saloon_id
             rating = req.body.rating;
-            if(rating <= 5){
-                const rate = await Saloon.findOne({where: {id : saloon_id} });
-     const z = rate.rating;
-     if(z=="0"){
-        const find1 = await Saloon.update({rating: rating},{where: {id : saloon_id} })
-        if(find1){
-            const barber = await Saloon.findOne({where: {id : saloon_id} });
-    return res.status(200).json({ success: true, barber });
+            if (rating <= 5) {
+                const rate = await Saloon.findOne({ where: { id: saloon_id } });
+                const z = rate.rating;
+                if (z == "0") {
+                    const find1 = await Saloon.update({ rating: rating }, { where: { id: saloon_id } })
+                    if (find1) {
+                        const barber = await Saloon.findOne({ where: { id: saloon_id } });
+                        return res.status(200).json({ success: true, barber });
+                    }
+                }
+                const Updaterate = (rating + z) / 2;
+                const find = await Saloon.update({ rating: Updaterate }, { where: { id: saloon_id } })
+                if (find) {
+                    const saloon = await Saloon.findOne({ where: { id: saloon_id } });
+                    return res.status(200).json({ success: true, saloon });
+                }
+            } else {
+                return res.status(400).json({ success: false, message: 'Rate between 1 -  5' });
             }
-     }
-    const Updaterate = (rating+ z)/2;
-            const find = await Saloon.update({rating: Updaterate},{where: {id : saloon_id} })
-          if(find){
-        const saloon = await Saloon.findOne({where: {id : saloon_id} });
-return res.status(200).json({ success: true, saloon });
         }
-    }else{
-        return res.status(400).json({ success: false, message: 'Rate between 1 -  5' });
     }
-    }
-    } 
     catch (error) {
         console.log(error)
-        return res.status(500).json({ success: false, error:error  })
+        return res.status(500).json({ success: false, error: error })
     }
 }

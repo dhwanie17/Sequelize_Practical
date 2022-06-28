@@ -6,21 +6,21 @@ module.exports = (Sequelize, DataTypes) => {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
-          }, 
-          saloon_id:{
+        },
+        saloon_id: {
             type: DataTypes.UUID,
             allowNull: false
-          },
+        },
         first_name: {
             type: DataTypes.STRING,
         },
         last_name: {
-            type: DataTypes.STRING,   
+            type: DataTypes.STRING,
         },
         rating: {
             type: DataTypes.DECIMAL,
         },
     });
- return Barber;
-    
+    return Barber;
+
 }
