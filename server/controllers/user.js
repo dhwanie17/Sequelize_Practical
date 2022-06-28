@@ -166,6 +166,6 @@ exports.RateSaloon = async (req, res, next) => {
     }
     catch (error) {
         console.log(error)
-        return res.status(500).json({ success: false, error: error })
+        return res.status(500).json({ success: false, message: "Saloon is not registred" })
     }
 }
