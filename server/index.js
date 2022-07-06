@@ -5,11 +5,14 @@ const UserRouter = require("./routes/user.js");
 const OwnerRouter = require("./routes/owner.js");
 const SaloonRouter = require("./routes/saloon.js")
 const BarberRouter = require("./routes/barber.js")
+const logger = require("./config/logger.js")
+const morgan = require("morgan");
 
 var router = express.Router();
 
 app.use(router);
 app.use(express.json());
+app.use(morgan("tiny",':method :url'))
 
 app.use("/user", UserRouter);
 app.use("/owner", OwnerRouter);
@@ -26,6 +29,6 @@ db.Barber.belongsTo(db.Saloon, { foreignKey: "saloon_id" })
 
 db.sequelize.sync().then((req) => {
   app.listen(5000, () => {
-    console.log("App is listening to port 5000");
+    logger.info("App is listening to port 5000");
   });
 }); 
