@@ -1,0 +1,35 @@
+{
+  "common":{
+      "serverConnect": "👍 Server successfully started at port ${PORT}",
+      "default": "Failed to connect to the server!Please try again soon!",
+      "internalServerError": "Internal server error",
+      "unAuth": "Invalid authentication Please login.",
+      "AuthToken": "Invalid auth token provided.",
+      "notActive": "The profile corresponding to provided data is not active, please contact support for further assistance.",
+      "joi": "Invalid details",
+      "fetchSuccess":"fetch data successfully",
+      "notFound":"Page Not found",
+      "passwordError":"password should have minimum 6 digit",
+      "invalidFile":"Please enter valid file upload type!",
+      "WrongPassword":"Old password is incorrect",
+      "logOut":"log out successfully",
+      "noData":"No data found"
+  },
+  "user":{
+      "success":"Account successfully created",
+      "logInSuccess":"Log in successfully",
+      "exist":"User already exist",
+      "notExist":"User not exist please register",
+      "OTPSend":"OTP send successfully",
+      "invalidOTP":"OTP invalid",
+      "invalidLogInDetails":"Email or password is incorrect",
+      "userNotExist":"You are not registered please register",
+      "updated":"update successfully",
+      "changePasswordSuccess":"Password change successfully",
+      "successFullyVerifyOTP":"OTP verify sucessfully"
+      },
+  "admin":{
+      "logInSuccess":"Log in successfully",
+      "invalidLogInDetails":"Email or password is incorrect"
+  }
+}
